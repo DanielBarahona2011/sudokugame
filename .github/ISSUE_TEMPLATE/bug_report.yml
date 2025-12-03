@@ -1,7 +1,94 @@
-name: Bug Report
+name: Reporte de Error
 description: Reporta un problema o error en la aplicación
-title: "[BUG] "
+title: "[ERROR] "
 labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportar este error. Completa la siguiente información para ayudarnos a resolverlo rápidamente.
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción del problema
+      description: Describe claramente qué está funcionando mal
+      placeholder: La aplicación se cierra inesperadamente cuando...
+    validations:
+      required: true
+
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducir
+      description: Lista los pasos exactos para reproducir el problema
+      placeholder: |
+        1. Abrir la aplicación
+        2. Seleccionar dificultad 'Difícil'
+        3. Hacer clic en...
+        4. Ver error
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Comportamiento esperado
+      description: Qué esperabas que pasara
+    validations:
+      required: true
+
+  - type: textarea
+    id: real
+    attributes:
+      label: Comportamiento actual
+      description: Qué está pasando en realidad
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sistema
+    attributes:
+      label: Sistema Operativo
+      options:
+        - Windows 10
+        - Windows 11
+        - Linux
+        - macOS
+    validations:
+      required: true
+
+  - type: input
+    id: python-version
+    attributes:
+      label: Versión de Python
+      placeholder: "ej: 3.11.5"
+
+  - type: dropdown
+    id: instalacion
+    attributes:
+      label: Tipo de instalación
+      options:
+        - Ejecutable (Sudoku_Game.exe)
+        - Código fuente (python main.py)
+    validations:
+      required: true
+
+  - type: textarea
+    id: adicional
+    attributes:
+      label: Información adicional
+      description: Cualquier otra información relevante (capturas, logs, etc.)
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Lista de verificación
+      options:
+        - label: He buscado en issues existentes
+          required: true
+        - label: He reproducido el error al menos dos veces
+          required: true
 body:
   - type: markdown
     attributes:

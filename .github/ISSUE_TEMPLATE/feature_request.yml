@@ -1,6 +1,76 @@
-name: Feature Request
+name: Solicitud de Funcionalidad
 description: Sugiere una nueva funcionalidad para la aplicación
-title: "[FEATURE] "
+title: "[FUNCIONALIDAD] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¿Tienes una idea genial para mejorar el Juego de Sudoku? ¡Compártela!
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: ¿Qué problema solucionaría esta funcionalidad?
+      description: Describe el problema o limitación actual
+      placeholder: No puedo... / Sería útil si...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solucion
+    attributes:
+      label: Describe la solución que propones
+      description: Explica detalladamente cómo debería funcionar
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: ¿Consideraste alternativas?
+      description: Otras formas de solucionar el mismo problema
+
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: Prioridad
+      options:
+        - Baja - Sería genial tenerlo
+        - Media - Mejoraría significativamente la experiencia
+        - Alta - Es fundamental para el uso de la aplicación
+    validations:
+      required: true
+
+  - type: dropdown
+    id: categoria
+    attributes:
+      label: Categoría
+      options:
+        - Interfaz de usuario
+        - Funcionalidad del juego
+        - Base de datos/Guardado
+        - Rendimiento
+        - Accesibilidad
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: mockup
+    attributes:
+      label: Mockups o ejemplos
+      description: Si tienes ideas visuales, describe o adjunta imágenes
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Lista de verificación
+      options:
+        - label: He buscado funcionalidades similares en issues existentes
+          required: true
+        - label: Esta funcionalidad beneficiaría a otros usuarios, no solo a mí
+          required: true
 labels: ["enhancement"]
 body:
   - type: markdown

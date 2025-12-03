@@ -1,6 +1,204 @@
-# Sudoku Game - Contributing Guide
+# Juego de Sudoku - Guía de Contribución
 
-¡Gracias por tu interés en contribuir al proyecto Sudoku Game!
+¡Gracias por tu interés en contribuir al proyecto Juego de Sudoku!
+
+## 🤝 Cómo Contribuir
+
+### Reportar Errores
+1. Busca en [Issues](../../issues) si ya fue reportado
+2. Si no existe, crea un nuevo issue con:
+   - Descripción clara del problema
+   - Pasos para reproducirlo
+   - Sistema operativo y versión de Python
+   - Capturas de pantalla si es visual
+
+### Sugerir Nuevas Funcionalidades
+1. Abre un issue con la etiqueta "enhancement"
+2. Describe claramente la funcionalidad propuesta
+3. Explica por qué sería útil para otros usuarios
+
+### Desarrollo de Código
+
+#### Configuración del Entorno
+```bash
+# 1. Fork del repositorio
+git clone https://github.com/TU_USUARIO/sudokugame.git
+cd sudokugame
+
+# 2. Crear rama de desarrollo
+git checkout -b feature/nueva-funcionalidad
+
+# 3. Instalar dependencias
+pip install -r requirements.txt
+
+# 4. Configurar pre-commit hooks (opcional pero recomendado)
+pip install pre-commit
+pre-commit install
+```
+
+#### Estándares de Código
+- Seguir **PEP 8** para estilo de Python
+- Comentarios en **español** para este proyecto
+- Docstrings para todas las funciones públicas
+- Nombres de variables descriptivos en español
+
+#### Estructura de Commits
+```
+tipo(alcance): descripción breve
+
+Descripción más detallada si es necesaria.
+
+Resuelve #123
+```
+
+Tipos permitidos:
+- `feat`: Nueva funcionalidad
+- `fix`: Corrección de error  
+- `docs`: Cambios en documentación
+- `style`: Cambios de formato (no afectan funcionamiento)
+- `refactor`: Refactoring de código
+- `test`: Agregar o modificar pruebas
+
+#### Pruebas
+Antes de enviar tu Pull Request:
+```bash
+# Ejecutar la aplicación y verificar funcionalidad básica
+python main.py
+
+# Verificar que no hay errores de sintaxis
+python -m py_compile *.py
+```
+
+### Proceso de Pull Request
+
+1. **Actualizar tu fork**
+   ```bash
+   git fetch upstream
+   git rebase upstream/main
+   ```
+
+2. **Crear Pull Request**
+   - Título descriptivo en español
+   - Descripción detallada de los cambios
+   - Referencias a issues relacionados
+   - Capturas de pantalla si hay cambios visuales
+
+3. **Proceso de Revisión**
+   - Al menos un revisor debe aprobar
+   - Todos los checks de CI deben pasar
+   - Sin conflictos con la rama main
+
+## 🎯 Áreas que Necesitan Ayuda
+
+### Alta Prioridad
+- [ ] **Pruebas automatizadas** - Implementar tests unitarios
+- [ ] **Documentación** - Mejorar comentarios y documentación
+- [ ] **Internacionalización** - Soporte multi-idioma
+- [ ] **Optimización** - Mejorar rendimiento del generador
+
+### Media Prioridad  
+- [ ] **Nuevos temas visuales** - Más opciones de personalización
+- [ ] **Sonidos** - Efectos de audio opcionales
+- [ ] **Exportar puzzles** - Guardar como PDF/imagen
+- [ ] **Tutorial** - Guía interactiva para nuevos usuarios
+
+### Baja Prioridad
+- [ ] **Modo multijugador** - Competencia online
+- [ ] **App móvil** - Versión para smartphones
+- [ ] **Estadísticas avanzadas** - Gráficos y análisis
+- [ ] **Integración social** - Compartir logros
+
+## 🏗️ Arquitectura del Proyecto
+
+### Módulos Principales
+```
+main.py              # Punto de entrada y coordinación
+sudoku_gui.py        # Interfaz gráfica (Vista)
+sudoku_game.py       # Lógica del juego (Modelo)  
+sudoku_generator.py  # Algoritmos de generación
+database.py          # Persistencia de datos
+style_manager.py     # Sistema de estilos
+```
+
+### Flujo de Datos
+```
+Usuario → GUI → Juego → Base de Datos
+         ↑ ← Gestor de Estilos ← CSS
+```
+
+### Patrones Utilizados
+- **MVC** - Separación de responsabilidades
+- **Observer** - Para eventos del juego
+- **Strategy** - Diferentes niveles de dificultad
+- **Singleton** - Para la base de datos
+
+## 📝 Pautas Específicas
+
+### Nuevas Funcionalidades
+1. Discutir en issue antes de implementar
+2. Mantener compatibilidad con versiones anteriores
+3. Agregar documentación y ejemplos
+4. Considerar impacto en rendimiento
+
+### Corrección de Errores
+1. Reproducir el error antes de arreglar
+2. Crear test que demuestre la corrección
+3. Verificar que no rompe funcionalidad existente
+4. Documentar la solución en el commit
+
+### Cambios de UI/UX
+1. Mantener consistencia con diseño actual
+2. Verificar en diferentes resoluciones
+3. Considerar accesibilidad
+4. Incluir capturas de pantalla en PR
+
+## 🎮 Pruebas Manuales
+
+### Funcionalidades Críticas a Probar
+- [ ] Generar nuevo juego en cada dificultad
+- [ ] Guardar y cargar partidas
+- [ ] Sistema de ranking con nombres
+- [ ] Validación de reglas Sudoku
+- [ ] Pausar/reanudar funcionamiento
+- [ ] Cierre y apertura de aplicación
+
+### Casos Límite a Considerar
+- Tablero lleno vs vacío
+- Múltiples usuarios concurrentes
+- Nombres muy largos en ranking
+- Partidas guardadas corruptas
+- Cierre inesperado durante guardado
+
+## 📬 Comunicación
+
+### Canales Disponibles
+- **GitHub Issues** - Para errores y funcionalidades
+- **Pull Requests** - Para revisiones de código
+- **Discussions** - Para preguntas generales
+
+### Tiempo de Respuesta Esperado
+- Issues: 48-72 horas
+- Pull Requests: 3-7 días  
+- Discussions: 24-48 horas
+
+## 🏆 Reconocimientos
+
+Los contribuidores serán reconocidos en:
+- README principal del proyecto
+- Notas de release de cada versión
+- Sección "Acerca de" de la aplicación
+
+### Tipos de Contribución Reconocidas
+- 🐛 Corrección de errores
+- ✨ Nuevas funcionalidades  
+- 📖 Documentación
+- 🎨 Diseño
+- 🔧 Herramientas/Infraestructura
+- 🌐 Traducción
+
+---
+
+¡Gracias por ayudar a mejorar el Juego de Sudoku! 🧩✨
 
 ## 🤝 Cómo Contribuir
 
