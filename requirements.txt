@@ -1,0 +1,24 @@
+# Dependencias para la aplicación Sudoku
+# Instalar con: pip install -r requirements.txt
+
+# Bibliotecas principales
+ttkthemes>=3.2.2
+
+# Para crear ejecutables (desarrollo)
+pyinstaller>=6.0.0
+
+# Bibliotecas estándar de Python (incluidas por defecto)
+# - tkinter: Interfaz gráfica
+# - sqlite3: Base de datos  
+# - threading: Manejo de hilos
+# - time: Funciones de tiempo
+# - datetime: Manejo de fechas
+# - json: Procesamiento JSON
+# - copy: Copia profunda de objetos
+# - random: Números aleatorios
+# - os: Interacción con sistema operativo
+# - sys: Parámetros del sistema
+
+# Dependencias opcionales para desarrollo
+# autopep8>=1.5.0     # Formateo automático de código
+# pylint>=2.10.0      # Análisis estático de código

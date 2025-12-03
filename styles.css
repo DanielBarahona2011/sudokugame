@@ -1,0 +1,622 @@
+/* Estilos CSS personalizados para la aplicación Sudoku */
+
+/* Estilos generales para la ventana principal */
+.main-window {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para el encabezado */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+}
+
+.score-display {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.timer-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6b6b;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el tablero de Sudoku */
+.sudoku-board {
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+}
+
+.sudoku-block {
+    background-color: #34495e;
+    border: 2px solid #2c3e50;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 2px;
+}
+
+/* Estilos para las celdas */
+.sudoku-cell {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+    margin: 1px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.sudoku-cell:hover {
+    background-color: #e8f4fd;
+    border-color: #3498db;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sudoku-cell.selected {
+    background-color: #3498db;
+    border-color: #2980b9;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.sudoku-cell.highlighted {
+    background-color: #e8f4fd;
+    border-color: #85c1e9;
+}
+
+.sudoku-cell.locked {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.sudoku-cell.error {
+    background-color: #ffebee;
+    border-color: #f44336;
+    color: #d32f2f;
+    animation: shake 0.5s ease-in-out;
+}
+
+.sudoku-cell.correct {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    color: #1976d2;
+}
+
+/* Nuevos estilos para efectos mejorados */
+.sudoku-cell.success-flash {
+    background-color: #4caf50;
+    color: white;
+    animation: success-pulse 0.6s ease-in-out;
+    border-color: #388e3c;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
+}
+
+.sudoku-cell.error-flash {
+    background-color: #f44336;
+    color: white;
+    animation: error-pulse 0.6s ease-in-out;
+    border-color: #d32f2f;
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.6);
+}
+
+.sudoku-cell.completed-highlight {
+    background-color: #ff9800;
+    color: white;
+    font-weight: 900;
+    animation: completion-glow 1.5s ease-in-out;
+    border-color: #f57c00;
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.8);
+}
+
+/* Animaciones mejoradas */
+@keyframes success-pulse {
+    0% { 
+        transform: scale(1); 
+        background-color: #4caf50;
+    }
+    50% { 
+        transform: scale(1.1); 
+        background-color: #66bb6a;
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+    }
+    100% { 
+        transform: scale(1); 
+        background-color: #e3f2fd;
+    }
+}
+
+@keyframes error-pulse {
+    0% { 
+        transform: scale(1) translateX(0); 
+        background-color: #f44336;
+    }
+    25% { 
+        transform: scale(1.05) translateX(-3px); 
+        background-color: #ef5350;
+    }
+    50% { 
+        transform: scale(1.1) translateX(3px); 
+        background-color: #f44336;
+    }
+    75% { 
+        transform: scale(1.05) translateX(-2px); 
+    }
+    100% { 
+        transform: scale(1) translateX(0); 
+        background-color: #ffebee;
+    }
+}
+
+@keyframes completion-glow {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+    }
+    25% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 152, 0, 0.8);
+    }
+    50% { 
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(255, 152, 0, 1);
+        font-weight: 900;
+    }
+    75% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 152, 0, 0.8);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+        font-weight: 700;
+    }
+}
+
+/* Animación para errores */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* Estilos para inputs de celdas */
+.cell-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    outline: none;
+    transition: color 0.2s ease;
+}
+
+.cell-input:focus {
+    color: #3498db;
+}
+
+.cell-input.readonly {
+    color: #34495e;
+    cursor: default;
+}
+
+/* Estilos para controles */
+.controls-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.controls-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Botones principales */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2980b9, #1f618d);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #229954, #196f3d);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c0392b, #922b21);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #138496, #0c6674);
+}
+
+/* Botones numéricos */
+.number-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin: 5px;
+    background: linear-gradient(135deg, #6c5ce7, #5f3dc4);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(108, 92, 231, 0.3);
+}
+
+.number-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(108, 92, 231, 0.4);
+    background: linear-gradient(135deg, #5f3dc4, #4c63d2);
+}
+
+.number-button:active {
+    transform: scale(0.95);
+}
+
+.clear-button {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+    font-size: 16px;
+}
+
+.clear-button:hover {
+    background: linear-gradient(135deg, #e84393, #c44569);
+}
+
+/* Estilos para la barra de estado */
+.status-bar {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-text {
+    font-size: 14px;
+}
+
+.progress-indicator {
+    background-color: #2c3e50;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #bdc3c7;
+}
+
+/* Estilos para diálogos */
+.dialog {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dialog-content {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #34495e;
+}
+
+.dialog-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilos para el menú */
+.menu-bar {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    font-weight: bold;
+}
+
+.menu-item {
+    padding: 8px 15px;
+    transition: background-color 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #3498db;
+}
+
+/* Estilos para estadísticas */
+.stats-panel {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.stats-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stats-label {
+    font-weight: bold;
+}
+
+.stats-value {
+    font-size: 16px;
+    color: #dff9fb;
+}
+
+/* Efectos especiales */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+    }
+}
+
+.glow {
+    box-shadow: 0 0 20px rgba(39, 174, 96, 0.6);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .sudoku-cell {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .cell-input {
+        font-size: 14px;
+    }
+    
+    .number-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .controls-section {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+/* Estilos para modo oscuro */
+.dark-theme {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-theme .sudoku-cell {
+    background-color: #2d2d2d;
+    border-color: #404040;
+    color: #ffffff;
+}
+
+.dark-theme .sudoku-cell.locked {
+    background-color: #404040;
+    color: #cccccc;
+}
+
+.dark-theme .controls-section {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+/* Animaciones de entrada */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Efectos de hover para elementos interactivos */
+.interactive:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+/* Estilos para tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilos para indicadores de progreso */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
